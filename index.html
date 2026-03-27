@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vintage Split-Flap Display</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Using a bold sans-serif font commonly seen on split flap displays -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="controls-container">
+        <h1>Vintage Split-Flap Display</h1>
+        <div class="input-group">
+            <textarea id="message-input" rows="5" placeholder="Escribe tu mensaje (Solo alfanumérico)&#10;Máximo 5 líneas, 18 caracteres por línea.&#10;Presiona Launch Display para cambiar."></textarea>
+            <div class="button-group">
+                <button id="preview-btn" class="secondary-btn">Preview</button>
+                <button id="share-btn" class="secondary-btn">Share URL</button>
+                <button id="launch-btn">Launch Display</button>
+            </div>
+        </div>
+        <p class="hints">El display esta optimizado para resolución de 1024x600 (Netbook). </p>
+    </div>
+
+    <!-- The container for true fullscreen -->
+    <div id="fullscreen-wrapper">
+        <div id="display-container">
+            <div id="board" class="board"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
