@@ -19,9 +19,20 @@ A vintage, mechanical-style split-flap display built completely with static HTML
    ```
 2. **Open the App:** Simply open `index.html` in your favorite web browser. No local server is strictly required.
 
-## Deployment
+## Deployment to Cloudflare Pages
 
-This app was designed from the ground up to be a highly performant static application. It is perfect for hosting on **Cloudflare Pages**, GitHub Pages, or any standard web server. Simply point your deployment to the root directory containing `index.html`.
+This app was designed from the ground up to be a highly performant static application. Hosting it on **Cloudflare Pages** takes less than a minute:
+
+1. Log into your [Cloudflare Dashboard](https://dash.cloudflare.com/) and navigate to **Workers & Pages**.
+2. Click **Create application**, then switch to the **Pages** tab.
+3. Select **Connect to Git** and authorize Cloudflare to access your GitHub repository (`lechu77/SplitFlapNinja`).
+4. In the **Build settings** section:
+   - **Framework preset:** `None`
+   - **Build command:** *(leave blank)*
+   - **Build output directory:** *(leave blank, or `/`)*
+5. Click **Save and Deploy**. 
+
+Your Split-Flap board will be live globally in seconds!
 
 ## License
 
