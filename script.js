@@ -91,13 +91,30 @@ class Board {
 
     setMessage(message, forceCycle = true) {
         const lines = message.split('\n');
+        const CHAR_STAGGER = 60;  // ms between letters within a word
+        const FLIP_DURATION = ANIMATION_SPEED * 2; // time for one flip step
+        const WORD_GAP = 150;     // ms pause after a word finishes before next starts
+        let wordDelay = 0;
+
         for (let r = 0; r < ROWS; r++) {
-            const line = lines[r] || '';
-            for (let c = 0; c < COLS; c++) {
-                setTimeout(() => {
-                    let char = c < line.length ? line[c] : ' ';
-                    this.flaps[r][c].setTarget(char, forceCycle);
-                }, c * 15 + r * 40); // staggered effect faster
+            const line = (lines[r] || '').padEnd(COLS, ' ');
+            let c = 0;
+            while (c < COLS) {
+                if (line[c] === ' ') {
+                    const col = c, row = r;
+                    setTimeout(() => this.flaps[row][col].setTarget(' ', forceCycle), wordDelay);
+                    c++;
+                } else {
+                    let wordStart = c;
+                    while (c < COLS && line[c] !== ' ') c++;
+                    const word = line.slice(wordStart, c);
+                    word.split('').forEach((char, i) => {
+                        const col = wordStart + i, row = r;
+                        setTimeout(() => this.flaps[row][col].setTarget(char, forceCycle), wordDelay + i * CHAR_STAGGER);
+                    });
+                    // advance delay past the time the last letter of this word finishes flipping
+                    wordDelay += (word.length - 1) * CHAR_STAGGER + FLIP_DURATION + WORD_GAP;
+                }
             }
         }
     }
@@ -192,6 +209,16 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(() => {
         updateBoard(true);
     }, 30000);
+
+    // Theme switcher
+    document.querySelectorAll('.tpl-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.tpl-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const theme = btn.dataset.theme;
+            document.body.className = theme === 'default' ? '' : `theme-${theme}`;
+        });
+    });
 
     previewBtn.addEventListener('click', () => {
         updateBoard(true);

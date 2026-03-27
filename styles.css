@@ -116,6 +116,70 @@ button.secondary-btn:hover {
     opacity: 0.7;
 }
 
+.template-bar {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.template-label {
+    color: var(--accent-cyan);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+.tpl-btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+    background-color: transparent;
+    color: var(--accent-cyan);
+    border: 1px solid var(--accent-cyan);
+    box-shadow: none;
+}
+
+.tpl-btn:hover {
+    background-color: rgba(0,255,185,0.1);
+    border-color: var(--accent-cyan);
+}
+
+.tpl-btn.active {
+    background-color: var(--accent-cyan);
+    color: var(--bg-main);
+}
+
+/* Themes */
+body.theme-siemens {
+    --bg-main: #000028;
+    --accent-cyan: #00BEDC;
+    --flap-bg: #001a33;
+    --flap-text: #00BEDC;
+    --board-bg: #000d1a;
+    --border-color: #003355;
+}
+
+body.theme-amber {
+    --bg-main: #1a0d00;
+    --accent-cyan: #FFB000;
+    --flap-bg: #1f1000;
+    --flap-text: #FFB000;
+    --board-bg: #0d0800;
+    --border-color: #3d2200;
+}
+
+body.theme-green {
+    --bg-main: #001a00;
+    --accent-cyan: #33FF33;
+    --flap-bg: #001400;
+    --flap-text: #33FF33;
+    --board-bg: #000d00;
+    --border-color: #004400;
+}
+
 /* Fullscreen Wrapper Logic */
 #fullscreen-wrapper {
     display: flex;
